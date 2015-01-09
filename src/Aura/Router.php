@@ -58,10 +58,11 @@ class Router implements RouterInterface
     }
 
     /**
+     * @param Request $request
      * @return RouteNamesInterface
      */
-    public function namedRoutes()
+    public function namedRoutes($request)
     {
-        return new AuraNames($this->routes);
+        return new NamedRoute($this->routes);
     }
 }

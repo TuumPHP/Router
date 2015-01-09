@@ -1,0 +1,5 @@
+{
+    "name": "wscore/router",
+    "description": "simple adaptors for various php routers",
+    "license": "MIT"
+}

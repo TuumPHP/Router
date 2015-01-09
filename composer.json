@@ -1,5 +1,5 @@
 {
-    "name": "wscore/router",
+    "name": "tuum/router",
     "description": "simple adaptors for various php routers",
     "license": "MIT"
 }

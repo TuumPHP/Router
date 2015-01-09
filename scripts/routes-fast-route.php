@@ -1,7 +1,7 @@
 <?php
 
+use Tuum\Router\FastRoute\Router;
 use Tuum\Stack\Dispatcher;
-use Tuum\Stack\Router\FastRoute;
 use Tuum\Stack\Routes;
 use Tuum\Web\App;
 
@@ -15,7 +15,7 @@ use Tuum\Web\App;
  * create a matcher. 
  */
 
-$matcher = FastRoute::forge();
+$matcher = Router::forge();
 
 /*
  * set up routes.

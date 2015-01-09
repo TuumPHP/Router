@@ -1,12 +1,12 @@
 <?php
-namespace Tuum\Router;
+namespace Tuum\Router\PhRouter;
 
 use Phroute\Dispatcher;
 use Phroute\Route;
 use Phroute\RouteCollector;
 use Tuum\Web\App;
 use Tuum\Web\Http\Request;
-use Tuum\Web\NamedRoutesInterface\RouteNamesInterface;
+use Tuum\Web\ServiceInterface\RouteNamesInterface;
 use Tuum\Web\ServiceInterface\RouterInterface;
 
 class HttpRouteNotFoundException extends \Exception

@@ -1,8 +1,8 @@
 <?php
-namespace Tuum\Router;
+namespace Tuum\Router\Aura;
 
 use Aura\Router\Map;
-use Tuum\Web\NamedRoutesInterface\RouteNamesInterface;
+use Tuum\Web\ServiceInterface\RouteNamesInterface;
 
 class NamedRoute implements RouteNamesInterface
 {

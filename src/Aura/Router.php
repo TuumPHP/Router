@@ -1,12 +1,12 @@
 <?php
-namespace Tuum\Stack\Router;
+namespace Tuum\Router\Aura;
 
 use Aura\Router\DefinitionFactory;
 use Aura\Router\Map;
 use Aura\Router\Route;
 use Aura\Router\RouteFactory;
 use Tuum\Web\Http\Request;
-use Tuum\Web\NamedRoutesInterface\RouteNamesInterface;
+use Tuum\Web\ServiceInterface\RouteNamesInterface;
 use Tuum\Web\ServiceInterface\RouterInterface;
 
 class Router implements RouterInterface
@@ -25,7 +25,7 @@ class Router implements RouterInterface
     }
 
     /**
-     * @return FastRoute
+     * @return Router
      */
     public static function forge()
     {

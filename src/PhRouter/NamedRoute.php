@@ -1,8 +1,8 @@
 <?php
-namespace Tuum\Router;
+namespace Tuum\Router\PhRouter;
 
 use Phroute\RouteCollector;
-use Tuum\Web\NamedRoutesInterface\RouteNamesInterface;
+use Tuum\Web\ServiceInterface\RouteNamesInterface;
 
 class NamedRoute implements RouteNamesInterface
 {

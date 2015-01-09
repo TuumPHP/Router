@@ -1,7 +1,7 @@
 <?php
 
+use Tuum\Router\PhRouter\Router;
 use Tuum\Stack\Dispatcher;
-use Tuum\Stack\Router\PhRoute;
 use Tuum\Stack\Routes;
 use Tuum\Web\App;
 
@@ -15,7 +15,7 @@ use Tuum\Web\App;
  * create a matcher. 
  */
 
-$matcher = PhRoute::forge();
+$matcher = Router::forge();
 
 /*
  * set up routes.

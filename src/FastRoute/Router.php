@@ -1,5 +1,5 @@
 <?php
-namespace Tuum\Router;
+namespace Tuum\Router\FastRoute;
 
 use FastRoute\DataGenerator\GroupCountBased;
 use FastRoute\Dispatcher\GroupCountBased as Dispatcher;
@@ -7,7 +7,7 @@ use FastRoute\RouteCollector;
 use FastRoute\RouteParser\Std;
 use Tuum\Web\App;
 use Tuum\Web\Http\Request;
-use Tuum\Web\NamedRoutesInterface\RouteNamesInterface;
+use Tuum\Web\ServiceInterface\RouteNamesInterface;
 use Tuum\Web\ServiceInterface\RouterInterface;
 
 class Router implements RouterInterface

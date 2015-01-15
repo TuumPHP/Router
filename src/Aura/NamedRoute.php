@@ -2,7 +2,7 @@
 namespace Tuum\Router\Aura;
 
 use Aura\Router\Map;
-use Tuum\Web\ServiceInterface\RouteNamesInterface;
+use Tuum\Router\RouteNamesInterface;
 
 class NamedRoute implements RouteNamesInterface
 {

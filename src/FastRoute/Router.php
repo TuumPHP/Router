@@ -7,8 +7,8 @@ use FastRoute\RouteCollector;
 use FastRoute\RouteParser\Std;
 use Tuum\Web\App;
 use Tuum\Web\Http\Request;
-use Tuum\Web\ServiceInterface\RouteNamesInterface;
-use Tuum\Web\ServiceInterface\RouterInterface;
+use Tuum\Router\RouteNamesInterface;
+use Tuum\Router\RouterInterface;
 
 class Router implements RouterInterface
 {

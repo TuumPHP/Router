@@ -6,8 +6,8 @@ use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\RouteCollection;
 use Tuum\Web\Http\Request;
-use Tuum\Web\ServiceInterface\RouteNamesInterface;
-use Tuum\Web\ServiceInterface\RouterInterface;
+use Tuum\Router\RouteNamesInterface;
+use Tuum\Router\RouterInterface;
 
 class Router implements RouterInterface
 {
@@ -52,7 +52,7 @@ class Router implements RouterInterface
 
     /**
      * @param Request $request
-     * @return RouteNamesInterface
+     * @return \Tuum\Router\RouteNamesInterface
      */
     public function namedRoutes($request)
     {

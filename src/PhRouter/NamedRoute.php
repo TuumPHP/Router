@@ -2,7 +2,7 @@
 namespace Tuum\Router\PhRouter;
 
 use Phroute\RouteCollector;
-use Tuum\Web\ServiceInterface\RouteNamesInterface;
+use Tuum\Router\RouteNamesInterface;
 
 class NamedRoute implements RouteNamesInterface
 {

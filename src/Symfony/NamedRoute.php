@@ -2,7 +2,7 @@
 namespace Tuum\Router\Symfony;
 
 use Symfony\Component\Routing\Generator\UrlGenerator;
-use Tuum\Web\ServiceInterface\RouteNamesInterface;
+use Tuum\Router\RouteNamesInterface;
 
 class NamedRoute implements RouteNamesInterface
 {

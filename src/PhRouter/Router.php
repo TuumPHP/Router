@@ -69,8 +69,8 @@ class Router implements RouterInterface
         $uri    = $request->getPathInfo();
         $found  =  $this->matchRoute($method, $uri);
         
-        $request->keep(App::CONTROLLER,  $found[0]);
-        $request->keep(App::ROUTE_PARAM, $found[2]);
+        $request->setAttribute(App::CONTROLLER,  $found[0]);
+        $request->setAttribute(App::ROUTE_PARAM, $found[2]);
 
         return $found;
     }

@@ -75,8 +75,8 @@ class Router implements RouterInterface
             case \FastRoute\Dispatcher::FOUND:
                 $handler = $routeInfo[1];
                 $vars    = $routeInfo[2];
-                $request->keep(App::CONTROLLER, $handler);
-                $request->keep(App::ROUTE_PARAM, $vars);
+                $request->setAttribute(App::CONTROLLER, $handler);
+                $request->setAttribute(App::ROUTE_PARAM, $vars);
                 return [$handler, $vars];
 
         }

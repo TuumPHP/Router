@@ -4,7 +4,7 @@ namespace Tuum\Router\Symfony;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 use Tuum\Router\ReverseRouteInterface;
 
-class NamedReverseRoute implements ReverseRouteInterface
+class NamedRoute implements ReverseRouteInterface
 {
     /**
      * @var UrlGenerator

@@ -4,7 +4,7 @@ namespace Tuum\Router\PhRouter;
 use Phroute\RouteCollector;
 use Tuum\Router\ReverseRouteInterface;
 
-class NamedReverseRoute implements ReverseRouteInterface
+class NamedRoute implements ReverseRouteInterface
 {
     /**
      * @var RouteCollector

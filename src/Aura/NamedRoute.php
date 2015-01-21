@@ -4,7 +4,7 @@ namespace Tuum\Router\Aura;
 use Aura\Router\Map;
 use Tuum\Router\ReverseRouteInterface;
 
-class NamedReverseRoute implements ReverseRouteInterface
+class NamedRoute implements ReverseRouteInterface
 {
     /**
      * @var Map

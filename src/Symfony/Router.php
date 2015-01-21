@@ -25,6 +25,14 @@ class Router implements RouterInterface
     }
 
     /**
+     * @return Router
+     */
+    public static function forge()
+    {
+        return new self(new RouteCollection());
+    }
+
+    /**
      * matches against $request.
      * returns matched result, or false if not matched.
      *
@@ -52,13 +60,13 @@ class Router implements RouterInterface
 
     /**
      * @param Request $request
-     * @return \Tuum\Router\ReverseRouteInterface
+     * @return ReverseRouteInterface
      */
     public function getReverseRoute($request)
     {
         $context = new RequestContext();
         $context->fromRequest($request);
         $route = new UrlGenerator($this->getRouting(), $context);
-        return new NamedReverseRoute($route);
+        return new NamedRoute($route);
     }
 }

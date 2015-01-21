@@ -59,10 +59,10 @@ class Router implements RouterInterface
 
     /**
      * @param Request $request
-     * @return \Tuum\Router\ReverseRouteInterface
+     * @return ReverseRouteInterface
      */
     public function getReverseRoute($request)
     {
-        return new NamedReverseRoute($this->routes);
+        return new NamedRoute($this->routes);
     }
 }

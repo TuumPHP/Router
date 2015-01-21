@@ -20,7 +20,7 @@ $matcher = Router::forge();
 /*
  * set up routes.
  */
-$r  = $matcher->router();
+$r  = $matcher->getRouting();
 $r->addRoute( 'get', 'todo', 'ToDoController' );
 
 /*

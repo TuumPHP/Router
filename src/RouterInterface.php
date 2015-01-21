@@ -2,7 +2,7 @@
 namespace Tuum\Router;
 
 use Tuum\Web\Http\Request;
-use Tuum\Router\RouteNamesInterface;
+use Tuum\Router\ReverseRouteInterface;
 
 /**
  * Interface RouterInterface
@@ -28,11 +28,11 @@ interface RouterInterface
      * 
      * @return mixed
      */
-    public function router();
+    public function getRouting();
 
     /**
      * @param Request $request
-     * @return RouteNamesInterface
+     * @return ReverseRouteInterface
      */
-    public function namedRoutes($request);
+    public function getReverseRoute($request);
 }

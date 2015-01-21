@@ -7,7 +7,7 @@ use FastRoute\RouteCollector;
 use FastRoute\RouteParser\Std;
 use Tuum\Web\App;
 use Tuum\Web\Http\Request;
-use Tuum\Router\RouteNamesInterface;
+use Tuum\Router\ReverseRouteInterface;
 use Tuum\Router\RouterInterface;
 
 class Router implements RouterInterface
@@ -48,7 +48,7 @@ class Router implements RouterInterface
     /**
      * @return RouteCollector
      */
-    public function router()
+    public function getRouting()
     {
         return $this->routes;
     }
@@ -85,9 +85,9 @@ class Router implements RouterInterface
 
     /**
      * @param Request $request
-     * @return RouteNamesInterface
+     * @return ReverseRouteInterface
      */
-    public function namedRoutes($request)
+    public function getReverseRoute($request)
     {
         return null;
     }

@@ -6,7 +6,7 @@ use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\RouteCollection;
 use Tuum\Web\Http\Request;
-use Tuum\Router\RouteNamesInterface;
+use Tuum\Router\ReverseRouteInterface;
 use Tuum\Router\RouterInterface;
 
 class Router implements RouterInterface
@@ -45,20 +45,20 @@ class Router implements RouterInterface
      *
      * @return RouteCollection
      */
-    public function router()
+    public function getRouting()
     {
         return $this->router;
     }
 
     /**
      * @param Request $request
-     * @return \Tuum\Router\RouteNamesInterface
+     * @return \Tuum\Router\ReverseRouteInterface
      */
-    public function namedRoutes($request)
+    public function getReverseRoute($request)
     {
         $context = new RequestContext();
         $context->fromRequest($request);
-        $route = new UrlGenerator($this->router(), $context);
-        return new NamedRoute($route);
+        $route = new UrlGenerator($this->getRouting(), $context);
+        return new NamedReverseRoute($route);
     }
 }

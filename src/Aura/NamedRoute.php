@@ -2,9 +2,9 @@
 namespace Tuum\Router\Aura;
 
 use Aura\Router\Map;
-use Tuum\Router\RouteNamesInterface;
+use Tuum\Router\ReverseRouteInterface;
 
-class NamedRoute implements RouteNamesInterface
+class NamedReverseRoute implements ReverseRouteInterface
 {
     /**
      * @var Map
@@ -24,7 +24,7 @@ class NamedRoute implements RouteNamesInterface
      * @param array  $args
      * @return string
      */
-    public function get($name, $args = [])
+    public function generate($name, $args = [])
     {
         return $this->route->generate($name, $args);
     }

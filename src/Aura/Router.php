@@ -6,7 +6,7 @@ use Aura\Router\Map;
 use Aura\Router\Route;
 use Aura\Router\RouteFactory;
 use Tuum\Web\Http\Request;
-use Tuum\Router\RouteNamesInterface;
+use Tuum\Router\ReverseRouteInterface;
 use Tuum\Router\RouterInterface;
 
 class Router implements RouterInterface
@@ -52,17 +52,17 @@ class Router implements RouterInterface
      *
      * @return Map
      */
-    public function router()
+    public function getRouting()
     {
         return $this->routes;
     }
 
     /**
      * @param Request $request
-     * @return \Tuum\Router\RouteNamesInterface
+     * @return \Tuum\Router\ReverseRouteInterface
      */
-    public function namedRoutes($request)
+    public function getReverseRoute($request)
     {
-        return new NamedRoute($this->routes);
+        return new NamedReverseRoute($this->routes);
     }
 }

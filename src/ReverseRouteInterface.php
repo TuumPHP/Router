@@ -8,12 +8,12 @@ namespace Tuum\Router;
  *
  * @package Tuum\Web\NamedRoutesInterface
  */
-interface RouteNamesInterface
+interface ReverseRouteInterface
 {
     /**
      * @param string $name
      * @param array  $args
      * @return string
      */
-    public function get($name, $args=[]);
+    public function generate($name, $args=[]);
 }

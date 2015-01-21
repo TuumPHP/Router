@@ -6,7 +6,7 @@ use Phroute\Route;
 use Phroute\RouteCollector;
 use Tuum\Web\App;
 use Tuum\Web\Http\Request;
-use Tuum\Router\RouteNamesInterface;
+use Tuum\Router\ReverseRouteInterface;
 use Tuum\Router\RouterInterface;
 
 class HttpRouteNotFoundException extends \Exception
@@ -53,7 +53,7 @@ class Router implements RouterInterface
     /**
      * @return RouteCollector
      */
-    public function router()
+    public function getRouting()
     {
         return $this->route;
     }
@@ -188,10 +188,10 @@ class Router implements RouterInterface
 
     /**
      * @param Request $request
-     * @return \Tuum\Router\RouteNamesInterface
+     * @return \Tuum\Router\ReverseRouteInterface
      */
-    public function namedRoutes($request)
+    public function getReverseRoute($request)
     {
-        return new NamedRoute($this->route);
+        return new NamedReverseRoute($this->route);
     }
 }

@@ -11,11 +11,22 @@
     "minimum-stability": "dev",
     "require": {
         "tuum/web": "dev-master",
+        "tuum/routing": "dev-master",
         "symfony/routing": "~2.2",
         "aura/router": "dev-master",
         "nikic/fast-route":"0.3.0",
         "phroute/phroute": "1.*"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/TuumPHP/Web"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/TuumPHP/Routing"
+        }
+    ]
     "autoload": {
         "psr-4": {
             "Tuum\\Router\\": "src/"

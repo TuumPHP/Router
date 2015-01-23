@@ -26,7 +26,7 @@
             "type": "vcs",
             "url": "https://github.com/TuumPHP/Routing"
         }
-    ]
+    ],
     "autoload": {
         "psr-4": {
             "Tuum\\Router\\": "src/"

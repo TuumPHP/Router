@@ -67,7 +67,13 @@ class Router implements RouterInterface
         list($this->staticRouteMap, $this->variableRouteData) = $this->route->getData();
         $method = $request->getMethod();
         $uri    = $request->getPathInfo();
-        $found  =  $this->matchRoute($method, $uri);
+        try {
+            $found  =  $this->matchRoute($method, $uri);
+        } catch( HttpRouteNotFoundException $e ) {
+            return null;
+        } catch( HttpMethodNotAllowedException $e ) {
+            return $request->respond()->error('Cannot Access');
+        }
         
         $request->setAttribute(App::CONTROLLER,  $found[0]);
         $request->setAttribute(App::ROUTE_PARAM, $found[2]);

@@ -1,6 +1,7 @@
 <?php
 namespace Tuum\Router\Tuum;
 
+use Tuum\Router\Route;
 use Tuum\Router\ReverseRouteInterface;
 use Tuum\Router\RouterInterface;
 use Tuum\Routing\Router as BaseRouter;
@@ -35,7 +36,7 @@ class Router implements RouterInterface
      * returns matched result, or false if not matched.
      *
      * @param Request $request
-     * @return mixed
+     * @return mixed|Route
      */
     public function match($request)
     {
@@ -45,9 +46,8 @@ class Router implements RouterInterface
         if (!$found) {
             return null;
         }
-        $request->setAttribute(App::CONTROLLER, $found[0]['handle']);
-        $request->setAttribute(App::ROUTE_PARAM, $found[1]);
-        return $found;
+        $found[0]['params'] = $found[1];
+        return new Route($found[0]);
     }
 
     /**

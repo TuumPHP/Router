@@ -2,8 +2,9 @@
 namespace Tuum\Router;
 
 use Closure;
-use Tuum\Web\Http\Request;
-use Tuum\Web\Http\Response;
+use Tuum\Web\ApplicationInterface;
+use Tuum\Web\Psr7\Request;
+use Tuum\Web\Psr7\Response;
 use Tuum\Web\App\AppHandleInterface;
 use Tuum\Web\App;
 
@@ -29,7 +30,7 @@ class Dispatcher
             $next = $class;
         }
         // dispatch the next object.
-        if ($next instanceof AppHandleInterface) {
+        if ($next instanceof ApplicationInterface) {
             return $next->__invoke($request);
         }
         if ($next instanceof \Closure) {

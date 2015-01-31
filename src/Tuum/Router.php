@@ -6,7 +6,7 @@ use Tuum\Router\ReverseRouteInterface;
 use Tuum\Router\RouterInterface;
 use Tuum\Routing\Router as BaseRouter;
 use Tuum\Web\App;
-use Tuum\Web\Http\Request;
+use Tuum\Web\Psr7\Request;
 
 class Router implements RouterInterface
 {
@@ -40,7 +40,7 @@ class Router implements RouterInterface
      */
     public function match($request)
     {
-        $path   = $request->getPathInfo();
+        $path   = $request->getUri()->getPath();
         $method = $request->getMethod();
         $found  = $this->router->match($path, $method);
         if (!$found) {

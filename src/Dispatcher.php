@@ -5,7 +5,6 @@ use Closure;
 use Tuum\Web\ApplicationInterface;
 use Tuum\Web\Psr7\Request;
 use Tuum\Web\Psr7\Response;
-use Tuum\Web\App\AppHandleInterface;
 use Tuum\Web\App;
 
 class Dispatcher

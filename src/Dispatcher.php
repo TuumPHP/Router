@@ -7,16 +7,20 @@ use Tuum\Web\Psr7\Request;
 use Tuum\Web\Psr7\Response;
 use Tuum\Web\App;
 
-class Dispatcher
+class Dispatcher implements ApplicationInterface
 {
     /**
+     * @var Route
+     */
+    protected $route;
+
+    /**
      * @param Request $request
-     * @param Route   $route
      * @return null|Response
      */
-    public function __invoke($request, $route)
+    public function __invoke($request)
     {
-        $class = $route->handle();
+        $class = $this->route->handle();
 
         // prepare object to dispatch.
         if (is_string($class) ) {
@@ -36,5 +40,13 @@ class Dispatcher
             return $next($request);
         }
         throw new \InvalidArgumentException();
+    }
+
+    /**
+     * @param Route $route
+     */
+    public function setRoute($route)
+    {
+        $this->route = $route;
     }
 }

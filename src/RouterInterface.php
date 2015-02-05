@@ -1,8 +1,7 @@
 <?php
 namespace Tuum\Router;
 
-use Tuum\Web\Http\Request;
-use Tuum\Router\ReverseRouteInterface;
+use Psr\Http\Message\RequestInterface;
 
 /**
  * Interface RouterInterface
@@ -17,8 +16,8 @@ interface RouterInterface
      * matches against $request. 
      * returns matched result, or false if not matched. 
      * 
-     * @param Request $request
-     * @return mixed
+     * @param RequestInterface $request
+     * @return Route|null
      */
     public function match($request);
 
@@ -31,8 +30,7 @@ interface RouterInterface
     public function getRouting();
 
     /**
-     * @param Request $request
      * @return ReverseRouteInterface
      */
-    public function getReverseRoute($request);
+    public function getReverseRoute();
 }

@@ -5,8 +5,9 @@ use FastRoute\DataGenerator\GroupCountBased;
 use FastRoute\Dispatcher\GroupCountBased as Dispatcher;
 use FastRoute\RouteCollector;
 use FastRoute\RouteParser\Std;
+use Psr\Http\Message\RequestInterface;
+use Tuum\Router\Route;
 use Tuum\Web\App;
-use Tuum\Web\Http\Request;
 use Tuum\Router\ReverseRouteInterface;
 use Tuum\Router\RouterInterface;
 
@@ -54,13 +55,13 @@ class Router implements RouterInterface
     }
 
     /**
-     * @param Request $request
-     * @return mixed
+     * @param RequestInterface $request
+     * @return Route|null
      */
     public function match($request)
     {
         $dispatcher = new Dispatcher($this->routes->getData());
-        $routeInfo  = $dispatcher->dispatch($request->getMethod(), $request->getPathInfo());
+        $routeInfo  = $dispatcher->dispatch($request->getMethod(), $request->getUri()->getPath());
 
         $this->matchResult = $routeInfo[0];
         switch ($this->matchResult) {
@@ -73,21 +74,19 @@ class Router implements RouterInterface
                 return [];
 
             case \FastRoute\Dispatcher::FOUND:
-                $handler = $routeInfo[1];
-                $vars    = $routeInfo[2];
-                $request->setAttribute(App::CONTROLLER, $handler);
-                $request->setAttribute(App::ROUTE_PARAM, $vars);
-                return [$handler, $vars];
+                return new Route([
+                    'handle' => $routeInfo[1],
+                    'params' => $routeInfo[2],
+                ]);
 
         }
         throw new \RuntimeException();
     }
 
     /**
-     * @param Request $request
      * @return ReverseRouteInterface
      */
-    public function getReverseRoute($request)
+    public function getReverseRoute()
     {
         return null;
     }

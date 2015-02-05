@@ -59,6 +59,22 @@ class Route
     }
 
     /**
+     * @return null
+     */
+    public function trailing()
+    {
+        return isset($this->data['params']['trailing']) ? $this->data['params']['trailing']: null;
+    }
+
+    /**
+     * @return null
+     */
+    public function matched()
+    {
+        return isset($this->data['params']['matched']) ? $this->data['params']['matched']: null;
+    }
+
+    /**
      * @param string $key
      * @return null|string
      */

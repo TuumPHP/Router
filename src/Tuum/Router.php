@@ -45,8 +45,7 @@ class Router implements RouterInterface
         if (!$found) {
             return null;
         }
-        $found[0]['params'] = $found[1];
-        return new Route($found[0]);
+        return new Route($found[0]->data);
     }
 
     /**

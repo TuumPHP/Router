@@ -17,14 +17,6 @@
         "phroute/phroute": "1.*"
     },
     "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/TuumPHP/Web"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/TuumPHP/Routing"
-        }
     ],
     "autoload": {
         "psr-4": {

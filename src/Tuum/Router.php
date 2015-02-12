@@ -5,6 +5,7 @@ use Psr\Http\Message\RequestInterface;
 use Tuum\Router\Route;
 use Tuum\Router\ReverseRouteInterface;
 use Tuum\Router\RouterInterface;
+use Tuum\Routing\RouteCollector;
 use Tuum\Routing\Router as BaseRouter;
 
 class Router implements RouterInterface
@@ -52,7 +53,7 @@ class Router implements RouterInterface
      * get router to set routes.
      * returns various router object.
      *
-     * @return mixed
+     * @return RouteCollector
      */
     public function getRouting()
     {

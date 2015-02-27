@@ -7,7 +7,6 @@ use FastRoute\RouteCollector;
 use FastRoute\RouteParser\Std;
 use Psr\Http\Message\RequestInterface;
 use Tuum\Router\Route;
-use Tuum\Web\App;
 use Tuum\Router\ReverseRouteInterface;
 use Tuum\Router\RouterInterface;
 

@@ -1,7 +1,6 @@
 <?php
 namespace Tuum\Router\Tuum;
 
-use Psr\Http\Message\RequestInterface;
 use Tuum\Router\Route;
 use Tuum\Router\ReverseRouteInterface;
 use Tuum\Router\RouterInterface;
@@ -35,13 +34,12 @@ class Router implements RouterInterface
      * matches against $request.
      * returns matched result, or false if not matched.
      *
-     * @param RequestInterface $request
-     * @return mixed|Route
+     * @param string $path
+     * @param string $method
+     * @return null|Route
      */
-    public function match($request)
+    public function match($path, $method)
     {
-        $path   = $request->getUri()->getPath();
-        $method = $request->getMethod();
         $found  = $this->router->match($path, $method);
         if (!$found) {
             return null;

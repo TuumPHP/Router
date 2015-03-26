@@ -5,7 +5,6 @@ use FastRoute\DataGenerator\GroupCountBased;
 use FastRoute\Dispatcher\GroupCountBased as Dispatcher;
 use FastRoute\RouteCollector;
 use FastRoute\RouteParser\Std;
-use Psr\Http\Message\RequestInterface;
 use Tuum\Router\Route;
 use Tuum\Router\ReverseRouteInterface;
 use Tuum\Router\RouterInterface;
@@ -54,13 +53,14 @@ class Router implements RouterInterface
     }
 
     /**
-     * @param RequestInterface $request
-     * @return Route|null
+     * @param string $path
+     * @param string $method
+     * @return null|Route
      */
-    public function match($request)
+    public function match($path, $method)
     {
         $dispatcher = new Dispatcher($this->routes->getData());
-        $routeInfo  = $dispatcher->dispatch($request->getMethod(), $request->getUri()->getPath());
+        $routeInfo  = $dispatcher->dispatch($method, $path);
 
         $this->matchResult = $routeInfo[0];
         switch ($this->matchResult) {

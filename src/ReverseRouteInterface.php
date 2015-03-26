@@ -6,7 +6,6 @@ namespace Tuum\Router;
  * 
  * an interface for obtaining url from route names. 
  *
- * @package Tuum\Web\NamedRoutesInterface
  */
 interface ReverseRouteInterface
 {

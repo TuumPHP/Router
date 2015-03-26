@@ -4,7 +4,6 @@ namespace Tuum\Router\PhRouter;
 use Phroute\Dispatcher;
 use Phroute\Route;
 use Phroute\RouteCollector;
-use Psr\Http\Message\RequestInterface;
 use Tuum\Router\ReverseRouteInterface;
 use Tuum\Router\RouterInterface;
 use Tuum\Router\Route as RouteInfo;
@@ -59,16 +58,15 @@ class Router implements RouterInterface
     }
 
     /**
-     * @param RequestInterface $request
-     * @return Route|null
+     * @param string $path
+     * @param string $method
+     * @return null|Route
      */
-    public function match($request)
+    public function match($path, $method)
     {
         list($this->staticRouteMap, $this->variableRouteData) = $this->route->getData();
-        $method = $request->getMethod();
-        $uri    = $request->getUri()->getPath();
         try {
-            list($handler, $filters, $vars) = $this->dispatchRoute($method, trim($uri, '/'));
+            list($handler, $filters, $vars) = $this->dispatchRoute($method, trim($path, '/'));
         } catch( HttpRouteNotFoundException $e ) {
             return null;
         } catch( HttpMethodNotAllowedException $e ) {

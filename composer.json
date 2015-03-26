@@ -10,7 +10,6 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "tuum/web": "0.*",
         "tuum/routing": "0.2.*",
         "aura/router": "2.2.*",
         "nikic/fast-route":"0.3.0",

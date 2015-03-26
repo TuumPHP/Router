@@ -5,7 +5,6 @@ use Aura\Router\DefinitionFactory;
 use Aura\Router\Map;
 use Aura\Router\Route;
 use Aura\Router\RouteFactory;
-use Psr\Http\Message\RequestInterface;
 use Tuum\Router\ReverseRouteInterface;
 use Tuum\Router\RouterInterface;
 
@@ -44,12 +43,13 @@ class Router implements RouterInterface
      * matches against $request.
      * returns matched result, or false if not matched.
      *
-     * @param RequestInterface $request
-     * @return Route|null
+     * @param string $path
+     * @param string $method
+     * @return null|Route
      */
-    public function match($request)
+    public function match($path, $method)
     {
-        $path  = parse_url( (string) $request->getUri(), PHP_URL_PATH);
+        $path  = parse_url( (string) $path, PHP_URL_PATH);
         $route = $this->routes->match($path, $this->server);
         if(!$route) return null;
         return new \Tuum\Router\Route([

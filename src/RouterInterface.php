@@ -1,25 +1,23 @@
 <?php
 namespace Tuum\Router;
 
-use Psr\Http\Message\RequestInterface;
-
 /**
  * Interface RouterInterface
  * 
  * an interface for matching a route against a request. 
  *
- * @package Tuum\Web\ServiceInterface
  */
 interface RouterInterface
 {
     /**
-     * matches against $request. 
-     * returns matched result, or false if not matched. 
-     * 
-     * @param RequestInterface $request
-     * @return Route|null
+     * matches against $request.
+     * returns matched result, or false if not matched.
+     *
+     * @param string $path
+     * @param string $method
+     * @return null|Route
      */
-    public function match($request);
+    public function match($path, $method);
 
     /**
      * get router to set routes. 

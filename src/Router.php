@@ -33,7 +33,10 @@ class Router implements RouterInterface
             if ($params = Matcher::verify($pattern, $path, $method)) {
                 if ($handler instanceof Handler) {
                     $handler = $handler->params($params);
-                    return new Route($handler->data);
+                    $data    = $handler->data;
+                    $data['path'] = $path;
+                    $data['method'] = $method;
+                    return new Route($data);
                 }
                 return [$handler, $params];
             }

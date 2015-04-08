@@ -36,11 +36,8 @@ class RouteCollectionTest extends \PHPUnit_Framework_TestCase
     {
         $this->routes->addRoute('test', 'path', 'tested');
         $matched = $this->router->match('path', 'test');
-        $handler = $matched[0];
-        $path    = $matched[1];
-        $this->assertEquals(['/path', 'method' => 'test'], $path);
-        $this->assertEquals('Tuum\Router\Handler', get_class($handler));
-        $this->assertEquals('tested', $handler->handle);
+        $this->assertEquals(['/path', 'method' => 'test'], $matched->params());
+        $this->assertEquals('Tuum\Router\Route', get_class($matched));
     }
 
     /**
@@ -75,10 +72,8 @@ class RouteCollectionTest extends \PHPUnit_Framework_TestCase
             $routes->get('get', 'got');
         });
         $matched = $this->router->match('/test/get', 'get');
-        $handler = $matched[0];
-        $path    = $matched[1];
-        $this->assertEquals(['/test/get', 'method' => 'get'], $path);
-        $this->assertEquals('Tuum\Router\Handler', get_class($handler));
-        $this->assertEquals('tested/got', $handler->handle);
+        $this->assertEquals('Tuum\Router\Route', get_class($matched));
+        $this->assertEquals('/test/get', $matched->path());
+        $this->assertEquals('get', $matched->method());
     }
 }

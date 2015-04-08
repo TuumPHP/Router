@@ -59,6 +59,22 @@ class Route
     }
 
     /**
+     * @return null|array
+     */
+    public function path()
+    {
+        return $this->__get('path');
+    }
+
+    /**
+     * @return null|array
+     */
+    public function method()
+    {
+        return $this->__get('method');
+    }
+
+    /**
      * @return null
      */
     public function trailing()

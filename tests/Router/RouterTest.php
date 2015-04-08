@@ -1,7 +1,6 @@
 <?php
 namespace tests\Router;
 
-use Tuum\Router\Handler;
 use Tuum\Router\Matcher;
 use Tuum\Router\Router;
 
@@ -41,7 +40,7 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         $closure = $matched[0];
         $this->assertEquals('closure', $closure());
 
-        $this->assertEquals([], $router->match('/bad/path'));
+        $this->assertEquals(null, $router->match('/bad/path'));
     }
 
     /**
@@ -77,8 +76,8 @@ class RouterTest extends \PHPUnit_Framework_TestCase
      */
     function router_returns_handler_if_Route_handler_is_given()
     {
-        $handler = new Handler('tested');
-        $handler->name('named');
+        $handler = new \stdClass();
+        $handler->name = 'named';
         $router = new Router();
         $router->addRoute('/path/test', $handler);
         $matched = $router->match('/path/test');

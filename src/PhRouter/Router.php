@@ -4,10 +4,9 @@ namespace Tuum\Router\PhRouter;
 use Phroute\Dispatcher;
 use Phroute\Route;
 use Phroute\RouteCollector;
-use Tuum\Web\App;
-use Tuum\Web\Http\Request;
 use Tuum\Router\ReverseRouteInterface;
 use Tuum\Router\RouterInterface;
+use Tuum\Router\Route as RouteInfo;
 
 class HttpRouteNotFoundException extends \Exception
 {
@@ -59,20 +58,21 @@ class Router implements RouterInterface
     }
 
     /**
-     * @param Request $request
-     * @return mixed|null
+     * @param string $path
+     * @param string $method
+     * @return null|Route
      */
-    public function match($request)
+    public function match($path, $method)
     {
         list($this->staticRouteMap, $this->variableRouteData) = $this->route->getData();
-        $method = $request->getMethod();
-        $uri    = $request->getPathInfo();
-        $found  =  $this->matchRoute($method, $uri);
-        
-        $request->setAttribute(App::CONTROLLER,  $found[0]);
-        $request->setAttribute(App::ROUTE_PARAM, $found[2]);
-
-        return $found;
+        try {
+            list($handler, $filters, $vars) = $this->dispatchRoute($method, trim($path, '/'));
+        } catch( HttpRouteNotFoundException $e ) {
+            return null;
+        } catch( HttpMethodNotAllowedException $e ) {
+            return null;
+        }
+        return new RouteInfo(['handle' => $handler, 'before' => $filters, 'params' => $vars ]);
     }
 
     /**
@@ -187,10 +187,9 @@ class Router implements RouterInterface
     }
 
     /**
-     * @param Request $request
      * @return ReverseRouteInterface
      */
-    public function getReverseRoute($request)
+    public function getReverseRoute()
     {
         return new NamedRoute($this->route);
     }

@@ -1,26 +1,23 @@
 <?php
 namespace Tuum\Router;
 
-use Tuum\Web\Http\Request;
-use Tuum\Router\ReverseRouteInterface;
-
 /**
  * Interface RouterInterface
  * 
  * an interface for matching a route against a request. 
  *
- * @package Tuum\Web\ServiceInterface
  */
 interface RouterInterface
 {
     /**
-     * matches against $request. 
-     * returns matched result, or false if not matched. 
-     * 
-     * @param Request $request
-     * @return mixed
+     * matches against $request.
+     * returns matched result, or false if not matched.
+     *
+     * @param string $path
+     * @param string $method
+     * @return null|Route
      */
-    public function match($request);
+    public function match($path, $method);
 
     /**
      * get router to set routes. 
@@ -31,8 +28,7 @@ interface RouterInterface
     public function getRouting();
 
     /**
-     * @param Request $request
      * @return ReverseRouteInterface
      */
-    public function getReverseRoute($request);
+    public function getReverseRoute();
 }

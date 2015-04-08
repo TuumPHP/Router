@@ -5,7 +5,6 @@ use Aura\Router\DefinitionFactory;
 use Aura\Router\Map;
 use Aura\Router\Route;
 use Aura\Router\RouteFactory;
-use Tuum\Web\Http\Request;
 use Tuum\Router\ReverseRouteInterface;
 use Tuum\Router\RouterInterface;
 
@@ -17,11 +16,19 @@ class Router implements RouterInterface
     protected $routes;
 
     /**
+     * server information (i.e. $_SERVER)
+     *
+     * @var array
+     */
+    protected $server;
+
+    /**
      * @param $routes
      */
-    protected function __construct($routes)
+    protected function __construct($routes, $server=[])
     {
         $this->routes = $routes;
+        $this->server = $server ?: $_SERVER;
     }
 
     /**
@@ -36,14 +43,20 @@ class Router implements RouterInterface
      * matches against $request.
      * returns matched result, or false if not matched.
      *
-     * @param Request $request
-     * @return Route
+     * @param string $path
+     * @param string $method
+     * @return null|Route
      */
-    public function match($request)
+    public function match($path, $method)
     {
-        $path  = parse_url( $request->getRequestUri(), PHP_URL_PATH);
-        $route = $this->routes->match($path, $request->server->all());
-        return $route;
+        $path  = parse_url( (string) $path, PHP_URL_PATH);
+        $route = $this->routes->match($path, $this->server);
+        if(!$route) return null;
+        return new \Tuum\Router\Route([
+            'handle' => $route->__get('name'),
+            'name'   => $route->__get('name'),
+            'params' => $route->__get('params'),
+        ]);
     }
 
     /**
@@ -58,10 +71,9 @@ class Router implements RouterInterface
     }
 
     /**
-     * @param Request $request
      * @return ReverseRouteInterface
      */
-    public function getReverseRoute($request)
+    public function getReverseRoute()
     {
         return new NamedRoute($this->routes);
     }

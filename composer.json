@@ -1,6 +1,6 @@
 {
     "name": "tuum/router",
-    "description": "simple adaptors for various php routers",
+    "description": "yet-another simple router for PHP",
     "license": "MIT",
     "authors": [
         {
@@ -10,10 +10,6 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "tuum/routing": "0.2.*",
-        "aura/router": "2.2.*",
-        "nikic/fast-route":"0.3.0",
-        "phroute/phroute": "1.*"
     },
     "repositories": [
     ],

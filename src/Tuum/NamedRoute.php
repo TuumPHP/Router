@@ -2,7 +2,7 @@
 namespace Tuum\Router\Tuum;
 
 use Tuum\Router\ReverseRouteInterface;
-use Tuum\Routing\ReverseRoute;
+use Tuum\Router\ReverseRoute;
 
 class NamedRoute implements ReverseRouteInterface
 {

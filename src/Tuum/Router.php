@@ -4,8 +4,8 @@ namespace Tuum\Router\Tuum;
 use Tuum\Router\Route;
 use Tuum\Router\ReverseRouteInterface;
 use Tuum\Router\RouterInterface;
-use Tuum\Routing\RouteCollector;
-use Tuum\Routing\Router as BaseRouter;
+use Tuum\Router\RouteCollector;
+use Tuum\Router\Router as BaseRouter;
 
 class Router implements RouterInterface
 {

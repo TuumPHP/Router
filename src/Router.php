@@ -11,6 +11,11 @@ class Router implements RouterInterface
     public $routes = [];
 
     /**
+     * @var ReverseRoute
+     */
+    private $reverseRoute;
+
+    /**
      * @param array $routes
      */
     public function __construct($routes=[])
@@ -65,10 +70,22 @@ class Router implements RouterInterface
     }
 
     /**
-     * @return ReverseRoute
+     * @param ReverseRoute $rev
+     */
+    public function setReverseRoute($rev)
+    {
+        $this->reverseRoute = $rev;
+        $this->reverseRoute->addRouter($this);
+    }
+
+    /**
+     * @return ReverseRouteInterface
      */
     public function getReverseRoute()
     {
-        return new ReverseRoute($this->routes);
+        if (!$this->reverseRoute) {
+            $this->reverseRoute = (new ReverseRoute())->addRouter($this);
+        }
+        return $this->reverseRoute;
     }
 }

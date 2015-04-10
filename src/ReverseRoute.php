@@ -12,9 +12,47 @@ class ReverseRoute implements ReverseRouteInterface
     public $routes = [];
 
     /**
+     * @var Router[]
+     */
+    private $routers = [];
+
+    /**
+     * @var bool
+     */
+    private $preparedRoutes = false;
+
+    /**
+     *
+     */
+    public function __construct()
+    {
+    }
+
+    /**
+     * @param Router $router
+     * @return $this
+     */
+    public function addRouter($router)
+    {
+        $this->routers[] = $router;
+        return $this;
+    }
+
+    /**
+     * prepares reverse routes from added routers.
+     */
+    public function prepare()
+    {
+        $this->preparedRoutes = true;
+        foreach($this->routers as $router) {
+            $this->prepareRoutes($router->routes);
+        }
+    }
+
+    /**
      * @param array $routes
      */
-    public function __construct($routes)
+    private function prepareRoutes($routes)
     {
         foreach($routes as $pattern => $handle) {
             if($handle instanceof Handler && isset($handle->data['name'])) {
@@ -36,6 +74,9 @@ class ReverseRoute implements ReverseRouteInterface
      */
     public function generate($name, $data=[])
     {
+        if (!$this->preparedRoutes) {
+            $this->prepare();
+        }
         if( !array_key_exists($name, $this->routes)) return '';
 
         $route = $this->routes[$name];

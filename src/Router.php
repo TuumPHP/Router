@@ -70,7 +70,7 @@ class Router implements RouterInterface
     }
 
     /**
-     * @param ReverseRoute $rev
+     * @param ReverseRouteInterface $rev
      */
     public function setReverseRoute($rev)
     {
